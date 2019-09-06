@@ -43,6 +43,6 @@ RUN cd /scws-1.2.3/;./configure;make;make install;\
 
 COPY etc/ /usr/local/etc/
 
-VOLUME ["/data"]
+VOLUME [ "/var/www/html" ]
 
-WORKDIR /data/
+WORKDIR /var/www/html
