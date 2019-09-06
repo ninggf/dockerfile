@@ -7,7 +7,7 @@ LABEL vendor="wulaphp Dev Team" \
     env.XDEBUG_IDEKEY=PHPSTORM\
     description="Official wulaphp docker image with specified extensions"
 
-ENV XDEBUG_REMOTE_PORT=9000 XDEBUG_ENABLE=0 XDEBUG_IDEKEY=PHPSTORM
+ENV XDEBUG_REMOTE_PORT=9000 XDEBUG_ENABLE=0 XDEBUG_IDEKEY=PHPSTORM APCU_ENABLE=0
 
 ADD ./exts.tar.bz2 /
 
@@ -36,7 +36,7 @@ RUN cd /scws-1.2.3/;./configure;make;make install;\
     libjpeg62-turbo-dev \
     libpng-dev libmemcached-dev zlib1g-dev libssl-dev libzip-dev libgearman-dev;\
     cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini;\
-    echo "apc.enabled = 0" >> /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini;\
+    echo "apc.enabled = \${APCU_ENABLE}" >> /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini;\
     apt-get clean;\
     rm -rf /tmp/pear/;\
     rm -rf /usr/src/php/;
