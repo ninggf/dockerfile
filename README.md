@@ -10,7 +10,7 @@
 
 ### 环境变量
 
-* `XDEBUG_REMOTE_PORT`: IDE所在主机IP,默认为`host.docker.internal`。
+* `XDEBUG_REMOTE_HOST`: IDE所在主机IP,默认为`host.docker.internal`。
 * `XDEBUG_REMOTE_PORT`: IDE监听的端口,默认`9000`。
 * `XDEBUG_ENABLE`: 等于1时开启`xdebug`调试,默认`0`。
 * `APCU_ENABLE`: 等于1时启用`apcu`运行时缓存,默认`0`。
