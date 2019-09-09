@@ -2,12 +2,15 @@ FROM php:7.1.32-fpm-stretch
 
 LABEL vendor="wulaphp Dev Team" \
     version="1.0" \
+    ent.XDEBUG_REMOTE_HOST=host.docker.internal\
     env.XDEBUG_REMOTE_PORT=9000\
     env.XDEBUG_ENABLE=0\
     env.XDEBUG_IDEKEY=PHPSTORM\
+    env.APCU_ENABLE=0\
     description="Official wulaphp docker image with specified extensions"
 
-ENV XDEBUG_REMOTE_PORT=9000 XDEBUG_ENABLE=0 XDEBUG_IDEKEY=PHPSTORM APCU_ENABLE=0
+ENV XDEBUG_REMOTE_PORT=9000 XDEBUG_ENABLE=0 XDEBUG_IDEKEY=PHPSTORM APCU_ENABLE=0\
+    XDEBUG_REMOTE_HOST=host.docker.internal
 
 ADD ./exts.tar.bz2 /
 
