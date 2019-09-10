@@ -4,7 +4,7 @@
 
 ## 启动容器
 
-`$docker run -d -e XDEBUG_ENABLE=1 windywany/php:latest`
+`$docker run -d -e XDEBUG_ENABLE=1 wulaphp/php:latest`
 
 > 可选择适合你的版本对应的**tag**，`latest`对应`7.3.x`版本。
 
