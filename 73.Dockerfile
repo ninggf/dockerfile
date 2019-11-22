@@ -1,4 +1,4 @@
-FROM php:7.3.10-fpm-stretch
+FROM php:7.3.12-fpm-stretch
 
 LABEL vendor="wulaphp Dev Team" \
     version="1.0" \
