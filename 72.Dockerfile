@@ -41,7 +41,8 @@ RUN cd /scws-1.2.3/;./configure;make;make install;\
     cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini;\
     echo "apc.enabled = \${APCU_ENABLE}" >> /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini;\
     apt-get clean;\
+    pecl clear-cache;\
     rm -rf /tmp/pear/;\
-    rm -rf /usr/src/php/;
+    rm -rf /usr/src/php/ /var/lib/apt/lists/*;
 
 COPY etc/ /usr/local/etc/
