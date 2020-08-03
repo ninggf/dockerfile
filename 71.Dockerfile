@@ -1,4 +1,4 @@
-FROM php:7.1.32-fpm-stretch
+FROM php:7.1.33-fpm-stretch
 
 LABEL vendor="wulaphp Dev Team" \
     version="1.0" \
@@ -22,18 +22,18 @@ RUN cd /scws-1.2.3/;./configure;make;make install;\
     libfreetype6-dev libzip-dev \
     libjpeg62-turbo-dev \
     libpng-dev libmemcached-dev zlib1g-dev libssl-dev libgearman-dev;\
-    cd /pecl-gearman-gearman-2.0.5/;phpize && ./configure && make && make install;\
+    cd /pecl-gearman-gearman-2.0.6/;phpize && ./configure && make && make install;\
     docker-php-ext-install -j$(nproc) gd pcntl \
     sockets bcmath pdo_mysql opcache libxml zlib;\
     pecl channel-update pecl.php.net;\
-    pecl install redis-5.0.2;\
-    pecl install xdebug-2.7.2;\
-    pecl install memcached-3.1.3;\
-    pecl install igbinary-3.0.1;\
-    pecl install apcu-5.1.17;\
-    pecl install zip-1.15.4;\
-    docker-php-ext-enable redis xdebug memcached igbinary apcu zip;\
-    cd /;rm -rf /scws-1.2.3/ /pecl-gearman-gearman-2.0.5/;\
+    pecl install redis-5.3.1;\
+    pecl install xdebug-2.9.6;\
+    pecl install memcached-3.1.5;\
+    pecl install igbinary-3.1.2;\
+    pecl install apcu-5.1.18;\
+    pecl install zip-1.19.0;\
+    docker-php-ext-enable sodium opcache redis xdebug memcached igbinary apcu zip;\
+    cd /;rm -rf /scws-1.2.3/ /pecl-gearman-gearman-2.0.6/;\
     echo "alias ll='ls --color=auto -l'" >> /root/.bashrc;\
     apt-get remove -y libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -45,7 +45,3 @@ RUN cd /scws-1.2.3/;./configure;make;make install;\
     rm -rf /usr/src/php/;
 
 COPY etc/ /usr/local/etc/
-
-VOLUME [ "/var/www/html" ]
-
-WORKDIR /var/www/html
