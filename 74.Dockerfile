@@ -1,4 +1,4 @@
-FROM php:7.4.8-fpm
+FROM php:7.4.9-fpm
 
 LABEL vendor="wulaphp Dev Team" \
     version="7.4.8" \
