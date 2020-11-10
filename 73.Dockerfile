@@ -2,7 +2,7 @@ FROM php:7.3.20-fpm-stretch
 
 LABEL vendor="wulaphp Dev Team" \
     version="7.3.20" \
-    ent.XDEBUG_REMOTE_HOST=host.docker.internal\
+    env.XDEBUG_REMOTE_HOST=host.docker.internal\
     env.XDEBUG_REMOTE_PORT=9000\
     env.XDEBUG_ENABLE=0\
     env.XDEBUG_IDEKEY=PHPSTORM\
