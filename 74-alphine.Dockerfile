@@ -1,7 +1,7 @@
-FROM php:7.4.12-cli-alpine3.12
+FROM php:7.4.16-cli-alpine3.12
 
 LABEL vendor="wulaphp Dev Team" \
-    version="7.4.12-cli" \
+    version="7.4.16-cli" \
     description="Official wulaphp docker image with specified extensions"
 
 RUN apk update &&\

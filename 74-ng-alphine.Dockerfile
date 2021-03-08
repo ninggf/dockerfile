@@ -1,7 +1,7 @@
-FROM php:7.4.12-fpm-alpine3.12
+FROM php:7.4.16-fpm-alpine3.12
 
 LABEL vendor="wulaphp Dev Team" \
-    version="7.4.12-ng-alphine" \
+    version="7.4.16-ng-alphine" \
     description="Official wulaphp docker image with specified extensions"
 
 COPY docker-ng-entrypoint.sh /usr/local/bin/docker-ng-entrypoint

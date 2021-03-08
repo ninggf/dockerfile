@@ -1,7 +1,7 @@
-FROM php:7.4.12-fpm-alpine3.12
+FROM php:7.4.16-fpm-alpine3.12
 
 LABEL vendor="wulaphp Dev Team" \
-    version="7.4.12-dev" \
+    version="7.4.16-dev" \
     env.XDEBUG_REMOTE_HOST=host.docker.internal\
     env.XDEBUG_REMOTE_PORT=9000\
     env.XDEBUG_ENABLE=1\
