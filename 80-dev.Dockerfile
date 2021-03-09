@@ -1,17 +1,17 @@
-FROM php:8.0.0RC4-fpm-alpine3.12
+FROM php:8.0-fpm-alpine3.12
 
 LABEL vendor="wulaphp Dev Team" \
     version="8.0.rc4-dev" \
     env.XDEBUG_CLIENT_HOST=host.docker.internal\
     env.XDEBUG_CLIENT_PORT=9000\
-    env.XDEBUG_START_WITH_REQUEST=no\
+    env.XDEBUG_START_WITH_REQUEST=default\
     env.XDEBUG_TRIGGER_VALUE=\
     env.XDEBUG_IDEKEY=PHPSTORM\
     env.XDEBUG_MODE=off\
     description="Official wulaphp docker image with specified extensions"
 
-ENV XDEBUG_CLIENT_PORT=9000 XDEBUG_START_WITH_REQUEST=no XDEBUG_IDEKEY=PHPSTORM\
-    XDEBUG_CLIENT_HOST=host.docker.internal XDEBUG_MODE=off
+ENV XDEBUG_CLIENT_PORT=9000 XDEBUG_START_WITH_REQUEST=default XDEBUG_IDEKEY=PHPSTORM\
+    XDEBUG_CLIENT_HOST=host.docker.internal XDEBUG_MODE=off XDEBUG_TRIGGER_VALUE=
 
 COPY docker-ng-entrypoint.sh /usr/local/bin/docker-ng-entrypoint
 
@@ -27,8 +27,6 @@ RUN apk update &&\
     docker-php-ext-install -j$(nproc) gd pcntl \
     sockets bcmath pdo_mysql opcache zip redis memcached xdebug;\
     mv /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini;\
-    echo "[xdebug]" >> /usr/local/etc/php/php.ini;\
-    echo "xdebug.mode=\${XDEBUG_MODE}" >> /usr/local/etc/php/php.ini;\
     apk del --no-network .phpize-deps;\
     apk add --no-cache nginx;\
     mv /etc/nginx /usr/local/etc/nginx;ln -s /usr/local/etc/nginx /etc/nginx;\
