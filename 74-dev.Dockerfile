@@ -13,7 +13,8 @@ ENV XDEBUG_REMOTE_PORT=9000 XDEBUG_ENABLE=1 XDEBUG_IDEKEY=PHPSTORM \
 
 COPY docker-ng-entrypoint.sh /usr/local/bin/docker-ng-entrypoint
 
-RUN apk update &&\
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories &&\
+    apk update &&\
     apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS &&\
     apk add --no-cache libpng-dev zlib-dev libzip-dev libmemcached-dev freetype-dev &&\
     pecl channel-update pecl.php.net &&\

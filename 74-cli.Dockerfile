@@ -4,11 +4,12 @@ LABEL vendor="wulaphp Dev Team" \
     version="7.4.21-cli" \
     description="Official wulaphp docker image with specified extensions"
 
-RUN apk update &&\
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories &&\
+    apk update &&\
     apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS &&\
     apk add --no-cache libpng-dev zlib-dev libzip-dev libmemcached-dev freetype-dev;\
     pecl channel-update pecl.php.net &&\
-    pecl install redis-5.3.1 &&\
+    pecl install redis-5.3.4 &&\
     pecl install memcached-3.1.5 &&\
     docker-php-ext-enable redis memcached &&\
     sed -i 's/apk add --no-cache/#apk add --no-cache/' /usr/local/bin/docker-php-ext-install &&\

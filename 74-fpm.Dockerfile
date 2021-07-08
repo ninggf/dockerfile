@@ -6,13 +6,14 @@ LABEL vendor="wulaphp Dev Team" \
 
 COPY docker-ng-entrypoint.sh /usr/local/bin/docker-ng-entrypoint
 
-RUN apk update &&\
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories &&\
+    apk update &&\
     apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS &&\
     apk add --no-cache libpng-dev zlib-dev libzip-dev libmemcached-dev freetype-dev &&\
     pecl channel-update pecl.php.net &&\
-    pecl install redis-5.3.1 &&\
+    pecl install redis-5.3.4 &&\
     pecl install memcached-3.1.5 &&\
-    pecl install yac-2.2.1 &&\
+    pecl install yac-2.3.0 &&\
     docker-php-ext-enable redis memcached yac &&\
     echo "yac.enable_cli = On" >> /usr/local/etc/php/conf.d/docker-php-ext-yac.ini &&\
     sed -i 's/apk add --no-cache/#apk add --no-cache/' /usr/local/bin/docker-php-ext-install &&\
