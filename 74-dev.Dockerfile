@@ -18,7 +18,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS &&\
     apk add --no-cache libpng-dev zlib-dev libzip-dev libmemcached-dev freetype-dev &&\
     pecl channel-update pecl.php.net &&\
-    pecl install redis-5.3.1 &&\
+    pecl install redis-5.3.4 &&\
     pecl install memcached-3.1.5 && \
     pecl install xdebug-2.9.8 && \
     docker-php-ext-enable redis memcached xdebug &&\
